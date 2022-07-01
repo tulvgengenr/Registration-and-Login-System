@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shiyan4.mapper.PersonMapper">
+    <select id="findAll" resultType="com.example.shiyan4.bean.Person">
+        SELECT * FROM person
+    </select>
+    <insert id="addPerson_Four" parameterType="com.example.shiyan4.bean.Person" useGeneratedKeys="true" keyProperty="username">
+        INSERT INTO person(username,name,age,teleno)VALUES(#{username},#{name},#{age},#{teleno})
+    </insert>
+    <insert id="addPerson_Three_age" parameterType="com.example.shiyan4.bean.Person" useGeneratedKeys="true" keyProperty="username">
+        INSERT INTO person(username,name,age,teleno)VALUES(#{username},#{name},#{age},#{teleno})
+    </insert>
+    <insert id="addPerson_Three_teleno" parameterType="com.example.shiyan4.bean.Person" useGeneratedKeys="true" keyProperty="username">
+        INSERT INTO person(username,name,age,teleno)VALUES(#{username},#{name},#{age},#{teleno})
+    </insert>
+    <insert id="addPerson_Two" parameterType="com.example.shiyan4.bean.Person" useGeneratedKeys="true" keyProperty="username">
+        INSERT INTO person(username,name,age,teleno)VALUES(#{username},#{name},#{age},#{teleno})
+    </insert>
+    <update id="updatePerson" parameterType="com.example.shiyan4.bean.Person">
+        UPDATE person SET username=#{username}, name=#{name}, age=#{age}, teleno=#{teleno} WHERE username=#{username}
+    </update>
+    <delete id="deletePerson" parameterType="String">
+        DELETE FROM person WHERE username=#{username}
+    </delete>
+    <select id="findByUsername" parameterType="String" resultType="com.example.shiyan4.bean.Person">
+        SELECT username,name,age,teleno FROM person WHERE username=#{username}
+    </select>
+</mapper>

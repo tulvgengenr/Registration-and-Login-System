@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shiyan4.mapper.UsersMapper">
+    <select id="findAll" resultType="com.example.shiyan4.bean.Users">
+        SELECT * FROM users
+    </select>
+    <insert id="addUsers" parameterType="com.example.shiyan4.bean.Users" useGeneratedKeys="true" keyProperty="username" >
+        INSERT INTO users (username,pass) VALUES (#{username},#{pass})
+    </insert>
+    <update id="updateUsers" parameterType="com.example.shiyan4.bean.Users">
+        UPDATE users SET username=#{username}, pass=#{pass} WHERE username=#{username}
+    </update>
+    <delete id="deleteUsers" parameterType="String">
+        DELETE FROM users WHERE username=#{username}
+    </delete>
+    <select id="findByUsername" parameterType="String" resultType="com.example.shiyan4.bean.Users">
+        SELECT username,pass FROM users WHERE username=#{username}
+    </select>
+</mapper>
